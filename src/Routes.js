@@ -15,7 +15,8 @@ import {
   SignUp as SignUpView,
   SignIn as SignInView,
   NotFound as NotFoundView,
-  Expenses as ExpensesView
+  Expenses as ExpensesView,
+  UploadFile as UploadFileView
 } from './views';
 
 const Routes = () => {
@@ -31,6 +32,12 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/dashboard"
+      />
+      <RouteWithLayout
+        component={UploadFileView}
+        exact
+        layout={MainLayout}
+        path="/upload"
       />
       <RouteWithLayout
         component={UserListView}

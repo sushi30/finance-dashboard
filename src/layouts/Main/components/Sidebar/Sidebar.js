@@ -54,6 +54,11 @@ const Sidebar = props => {
       icon: <DashboardIcon />
     },
     {
+      title: 'Upload',
+      href: '/upload',
+      icon: <DashboardIcon />
+    },
+    {
       title: 'Users',
       href: '/users',
       icon: <PeopleIcon />
