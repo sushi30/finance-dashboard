@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/styles';
-import { UsersToolbar, UsersTable } from './components';
+import { UsersToolbar, ExpensesTable } from './components';
 import * as API from '../../API';
+import CategoryChangeDialog from './dialogs/CategoryChangeDialog';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -16,6 +17,8 @@ const UserList = () => {
   const classes = useStyles();
 
   const [flows, setFlows] = useState(null);
+  const [categoryDialogOpen, setCategoryDialogOpen] = React.useState(false);
+  const [categoryDialogData, setCategoryDialogData] = React.useState({});
 
   async function getData() {
     const res = await API.getCashFlows();
@@ -28,9 +31,13 @@ const UserList = () => {
 
   return (
     <div className={classes.root}>
+      <CategoryChangeDialog
+        data={categoryDialogData}
+        open={categoryDialogOpen}
+      />
       <UsersToolbar />
       <div className={classes.content}>
-        {flows ? <UsersTable users={flows} /> : <p>Loading...</p>}
+        {flows ? <ExpensesTable flows={flows} /> : <p>Loading...</p>}
       </div>
     </div>
   );

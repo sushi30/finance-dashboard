@@ -1,2 +1,2 @@
-export { default as UsersTable } from './UsersTable';
+export { default as ExpensesTable } from './ExpensesTable';
 export { default as UsersToolbar } from './UsersToolbar';
