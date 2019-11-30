@@ -14,7 +14,8 @@ import {
   Settings as SettingsView,
   SignUp as SignUpView,
   SignIn as SignInView,
-  NotFound as NotFoundView
+  NotFound as NotFoundView,
+  Expenses as ExpensesView
 } from './views';
 
 const Routes = () => {
@@ -48,6 +49,12 @@ const Routes = () => {
         exact
         layout={MainLayout}
         path="/typography"
+      />
+      <RouteWithLayout
+        component={ExpensesView}
+        exact
+        layout={MainLayout}
+        path="/expenses"
       />
       <RouteWithLayout
         component={IconsView}
