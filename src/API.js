@@ -24,3 +24,13 @@ export async function getCashFlows() {
     headers: getHeader()
   }).then(async res => await res.json());
 }
+
+export async function uploadFile(file) {
+  const data = new FormData();
+  data.append('file', file);
+  return await fetch(ENDPOINT + '/upload', {
+    method: 'post',
+    headers: getHeader(),
+    body: data
+  }).then(async res => await res.json());
+}

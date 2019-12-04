@@ -1,9 +1,11 @@
 import React, { useCallback } from 'react';
 import { useDropzone } from 'react-dropzone';
+import * as API from '../../../API';
 
 export default function MyDropZone() {
-  const onDrop = useCallback(acceptedFiles => {
-    console.log(acceptedFiles)
+  const onDrop = useCallback(async acceptedFiles => {
+    console.log(acceptedFiles);
+    await API.uploadFile(acceptedFiles);
   }, []);
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
