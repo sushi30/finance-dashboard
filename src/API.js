@@ -27,10 +27,12 @@ export async function getCashFlows() {
 
 export async function uploadFile(file) {
   const data = new FormData();
-  data.append('file', file);
+  data.append('file', file[0]);
+  for (var key of data.entries()) {
+    console.log(key[0] + ', ' + key[1]);
+  }
   return await fetch(ENDPOINT + '/upload', {
     method: 'post',
-    headers: getHeader(),
     body: data
-  }).then(async res => await res.json());
+  }).then(async res => res.status);
 }
