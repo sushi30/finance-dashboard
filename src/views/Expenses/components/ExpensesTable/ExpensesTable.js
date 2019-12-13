@@ -24,10 +24,7 @@ const ExpensesTable = props => {
   const classes = useStyles();
 
   return (
-    <Card
-      {...rest}
-      className={clsx(classes.root, className)}
-    >
+    <Card {...rest} className={clsx(classes.root, className)}>
       <CardContent className={classes.content}>
         <MaterialTable
           columns={[
@@ -51,10 +48,11 @@ const ExpensesTable = props => {
               editComponent: ({ value, onChange }) => (
                 <AutoSuggestCategory
                   onChange={(e, { newValue }) => onChange(newValue)}
-                  suggestions={Object.values(flows)
-                    .filter((e, i) => Object.values(flows).indexOf(e) === i)
+                  suggestions={flows
+                    .map(f => f.category)
+                    .filter(s => s != null)
                     .sort()}
-                  value={value}
+                  value={value || ''}
                 />
               )
             }

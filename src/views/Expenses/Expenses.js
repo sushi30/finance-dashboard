@@ -9,7 +9,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(3)
   },
   content: {
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
+    height: '50%'
   }
 }));
 
@@ -22,6 +23,7 @@ const UserList = () => {
 
   async function getData() {
     const res = await API.getCashFlows();
+    window.data = res;
     setFlows(res);
   }
 
@@ -35,7 +37,6 @@ const UserList = () => {
         data={categoryDialogData}
         open={categoryDialogOpen}
       />
-      <UsersToolbar />
       <div className={classes.content}>
         {flows ? <ExpensesTable flows={flows} /> : <p>Loading...</p>}
       </div>
